@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{0A75DF70-47FB-4DBF-B645-78D8E7E544FE}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Subterranea/Polygon.cs">
+    <Files>
+      <File FileName="Subterranea/TileManager.cs" Line="35" Column="45" />
+      <File FileName="Subterranea/Global.cs" Line="13" Column="8" />
+      <File FileName="Subterranea/Bounding.cs" Line="18" Column="42" />
+      <File FileName="Subterranea/Shape.cs" Line="17" Column="2" />
+      <File FileName="Subterranea/Program.cs" Line="7" Column="29" />
+      <File FileName="Subterranea/Tile.cs" Line="8" Column="22" NotebookId="1" />
+      <File FileName="Subterranea/MonoGame.Framework.dll.config" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Subterranea/MainGame.cs" Line="17" Column="9" NotebookId="1" />
+      <File FileName="Subterranea/Polygon.cs" Line="20" Column="36" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.Subterranea PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,37 @@
+public void UpdateTile(int x, int y) {
+            if (IsOutside(x, y)) {
+                return;
+            }
+            Vector2 weight = new Vector2(0, 0);
+            int wx = 0;
+            int wy = 0;
+            for (int cx = x - CHECKSIZE; cx <= x + CHECKSIZE; cx++) {
+                for (int cy = y - CHECKSIZE; cy <= y + CHECKSIZE; cy++) {
+                    if (cx == x && cy == y) {
+                        continue;
+                    }
+                    int tileType = GetAt(cx, cy);
+                    if (tileType == 1) {
+                        weight.X -= Sign(cx - x);
+                        weight.Y -= Sign(cy - y);
+                    }
+
+                }
+
+            }
+            weight /= 10;
+            weight += new Vector2(1, 1);
+            weight /= 2;
+            sides[x, y] = weight;
+            //sides[x + 1, y + 1] = weight;
+        }
+        public void UpdateSides(Rectangle bounds) { // Updates side values for a given area
+            for (int x = bounds.X; x < bounds.Width + 1; x++) {
+                for (int y = bounds.Y; y < bounds.Height + 1; y++) {
+                    UpdateTile(x, y);
+                }
+            }
+        }
+        public void UpdateSides() {
+            UpdateSides(new Rectangle(CHECKSIZE, CHECKSIZE, MAPX - CHECKSIZE, MAPY - CHECKSIZE));
+        }

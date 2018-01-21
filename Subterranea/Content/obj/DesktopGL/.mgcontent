@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/ethan/Downloads/Subterranea-ace366f5fa452d262103cbf1fc5cb7dc6ac06ce7/Subterranea/Content/circle.png</File>
+    <File>C:/Users/ethan/Downloads/Subterranea-ace366f5fa452d262103cbf1fc5cb7dc6ac06ce7/Subterranea/Content/slope.png</File>
+  </SourceFiles>
+</SourceFileCollection>
