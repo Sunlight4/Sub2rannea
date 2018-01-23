@@ -28,6 +28,14 @@ namespace Subterranea {
         }
         public static float Project(Vector2 vector, Vector2 axis) => Vector2.Dot(vector, axis / axis.Length());
         public static Vector2 ProjectVec(Vector2 vector, Vector2 axis) => axis/axis.Length()*Project(vector, axis);
+        public static void ResolveCollision(CollisionObject o1, CollisionObject o2) {
+            Collision collision = Overlapping(o1.polygon, o2.polygon);
+            if (collision==null) {
+                return;
+            }
+            o1.ResolveCollision(new CollisionInfo {overlap=collision.overlap, axis=collision.axis, other=o2});
+            o2.ResolveCollision(new CollisionInfo { overlap = collision.overlap, axis = -collision.axis, other = o1 });
+        }
         public static Collision Overlapping (Polygon s1, Polygon s2) {
             HashSet<Vector2> axes = new HashSet<Vector2>();
             axes.UnionWith(s1.Axes(s2.Position));

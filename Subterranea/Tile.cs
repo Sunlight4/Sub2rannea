@@ -11,6 +11,7 @@ namespace Subterranea {
         protected int slopeRotation;
         protected bool filled = false;
         protected Vector2 position;
+        public override bool IsStatic() => true;
         public Vector2 Position
         {
             get => position;
@@ -27,9 +28,7 @@ namespace Subterranea {
             filled = false;
         }
 
-        public Vector2 GetPosition() => position;
-
-        public int Solid() => 100;
+        public override Vector2 GetPosition() => position;
 
         public Tile() {
             isnull = true;
@@ -39,6 +38,7 @@ namespace Subterranea {
             set {
                 sloped = true;
                 slopeRotation = value;
+                polygon = Polygon.RightTriangle(this, slopeRotation, 0.5f);
             }
         }
         public Tile(TileManager mng, bool filled, Vector2 pos) {
@@ -46,6 +46,7 @@ namespace Subterranea {
             slopeRotation = 0;
             position = pos;
             this.filled = filled;
+            polygon = Polygon.AABB(this, 0.5f, 0.5f); 
         }
     }
 }

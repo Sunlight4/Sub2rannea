@@ -2,9 +2,13 @@
 using Microsoft.Xna.Framework;
 namespace Subterranea
 {
-    public interface CollisionObject
+    public abstract class CollisionObject
     {
-        Vector2 GetPosition();
-        int Solid();
+        public abstract Vector2 GetPosition();
+        public Polygon polygon;
+        public virtual bool IsStatic() => false;
+        public virtual void ResolveCollision(CollisionInfo info) {
+            
+        }
     }
 }
