@@ -10,6 +10,7 @@ namespace Subterranea {
         public const int MAPY = 1000; // Fixed size of map
         public Tile nulltile;
         public Tile[,] tiles; // Tile data: 0 - empty  1 - filled  2 - out of bounds
+        public List<CollisionObject> objects;
         Random rand = new Random(6); // RNG
         public static int[][] sideOffsets = new int[][] {
             new int[] {1, 0},
@@ -22,6 +23,7 @@ namespace Subterranea {
         }
         public TileManager() {
             nulltile = new Tile();
+            objects = new List<CollisionObject>();
         }
         public Vector2 GetInput() {
             if (Keyboard.GetState().IsKeyDown(Keys.A)) {
@@ -33,6 +35,9 @@ namespace Subterranea {
             return new Vector2();
         }
         public void Update(GameTime delta) {
+            foreach (GameObject gameObject in objects) {
+                gameObject.Update(delta);
+            }
             lastState = Keyboard.GetState();
         }
         public static int Sign(float n) { // Taking code from Nested Dungeon's Player.cs

@@ -11,7 +11,8 @@ namespace Subterranea {
         private HashSet<Vector2> axes;
         public HashSet<Vector2> normals;
         public Vector2[] points;
-        public Vector2 Position;
+        public Vector2 Position { get => parent.GetPosition(); }
+        public CollisionObject parent;
         public Polygon(Vector2[] points) {
             axes = new HashSet<Vector2>();
             normals = new HashSet<Vector2>();

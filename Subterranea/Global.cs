@@ -11,7 +11,7 @@ namespace Subterranea {
         public static int MAXCAVESIZE = 10;
         public static int ppu;
        
-        
+
         public static Vector2 gravity = new Vector2(0, 9.8f);
         public static Vector2 Rotate90(Vector2 vector, int direction=1) => new Vector2(vector.Y * direction, -vector.X * direction); //+1 = counterclockwise, -1 = clockwise
         public static Vector2 RefVector(Vector2 vector) {
@@ -28,7 +28,7 @@ namespace Subterranea {
         }
         public static float Project(Vector2 vector, Vector2 axis) => Vector2.Dot(vector, axis / axis.Length());
         public static Vector2 ProjectVec(Vector2 vector, Vector2 axis) => axis/axis.Length()*Project(vector, axis);
-        public static Collision Overlapping (Shape s1, Shape s2) {
+        public static Collision Overlapping (Polygon s1, Polygon s2) {
             HashSet<Vector2> axes = new HashSet<Vector2>();
             axes.UnionWith(s1.Axes(s2.Position));
             axes.UnionWith(s2.Axes(s1.Position));

@@ -47,6 +47,7 @@
     <Compile Include="Bounding.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="CollisionObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
