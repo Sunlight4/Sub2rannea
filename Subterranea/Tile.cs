@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Subterranea {
-    public class Tile
+    public class Tile : CollisionObject
     {
         public bool sloped;
         protected int slopeRotation;
@@ -27,6 +27,9 @@ namespace Subterranea {
             filled = false;
         }
 
+        public Vector2 GetPosition() => position;
+
+        public int Solid() => 100;
 
         public Tile() {
             isnull = true;

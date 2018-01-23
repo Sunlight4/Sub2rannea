@@ -5,6 +5,6 @@ namespace Subterranea
     public interface CollisionObject
     {
         Vector2 GetPosition();
-        bool Solid();
+        int Solid();
     }
 }
