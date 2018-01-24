@@ -10,7 +10,7 @@ namespace Subterranea {
         public const int MAPY = 1000; // Fixed size of map
         public Tile nulltile;
         public Tile[,] tiles; // Tile data: 0 - empty  1 - filled  2 - out of bounds
-        public List<CollisionObject> objects;
+        public List<GameObject> objects;
         Random rand = new Random(6); // RNG
         public static int[][] sideOffsets = new int[][] {
             new int[] {1, 0},
@@ -23,7 +23,7 @@ namespace Subterranea {
         }
         public TileManager() {
             nulltile = new Tile();
-            objects = new List<CollisionObject>();
+            objects = new List<GameObject>();
         }
         public Vector2 GetInput() {
             if (Keyboard.GetState().IsKeyDown(Keys.A)) {
@@ -35,8 +35,36 @@ namespace Subterranea {
             return new Vector2();
         }
         public void Update(GameTime delta) {
+            List<CollisionObject[]> collisions = new List<CollisionObject[]>();
+            foreach (GameObject gameObject in objects) {
+                if (gameObject.hasMoved) {
+                    foreach (Tile tile in gameObject.tiles) {
+                        tile.objects.Remove(gameObject);
+                    }
+                    gameObject.tiles = new List<Tile>();
+                    Rectangle rect = gameObject.polygon.GetBounds();
+                    for (int i = rect.Left; i <= rect.Right; i++) {
+                        for (int j = rect.Top; j <= rect.Bottom; j++) {
+                            foreach (GameObject obj2 in tiles[i, j].objects) {
+                                if (!obj2.hasMoved) {
+                                    collisions.Add(new CollisionObject[] {gameObject, obj2});
+                                }
+                            }
+                            tiles[i, j].objects.Add(gameObject);
+                            gameObject.tiles.Add(tiles[i, j]);
+                            collisions.Add(new CollisionObject[] { gameObject, tiles[i, j] });
+                        }
+                    }
+                }
+            }
+            foreach (CollisionObject[] pair in collisions) {
+                Global.ResolveCollision(pair[0], pair[1]);
+            }
             foreach (GameObject gameObject in objects) {
                 gameObject.Update(delta);
+            }
+            foreach (CollisionObject[] pair in collisions) {
+                Global.CorrectPenetration(pair[0], pair[1]);
             }
             lastState = Keyboard.GetState();
         }

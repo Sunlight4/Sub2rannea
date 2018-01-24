@@ -69,5 +69,21 @@ namespace Subterranea {
             return new Collision(s1, s2, (float)minDist, minAxis);
 
         }
+
+        public static void CorrectPenetration(CollisionObject collisionObject1, CollisionObject collisionObject2)
+        {
+            Collision collision = Overlapping(collisionObject1.polygon, collisionObject2.polygon);
+            if (collision == null)
+            {
+                return;
+            }
+            if (collisionObject1.IsStatic()) {
+                collisionObject2.SetPosition(collisionObject2.GetPosition()-collision.overlap*collision.axis);
+            }
+            if (collisionObject2.IsStatic())
+            {
+                collisionObject1.SetPosition(collisionObject1.GetPosition() + collision.overlap * collision.axis);
+            }
+        }
     }
 }

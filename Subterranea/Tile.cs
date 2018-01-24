@@ -12,6 +12,7 @@ namespace Subterranea {
         protected bool filled = false;
         protected Vector2 position;
         public override bool IsStatic() => true;
+        public List<GameObject> objects = new List<GameObject>();
         public Vector2 Position
         {
             get => position;
